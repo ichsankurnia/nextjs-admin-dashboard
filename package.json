@@ -1,18 +1,20 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "set port=1411 && next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "set port=1411 && next start"
   },
   "dependencies": {
+    "axios": "^0.25.0",
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "recoil": "^0.6.0"
   },
   "devDependencies": {
     "@types/node": "17.0.4",
-    "@types/react": "17.0.38",
+    "@types/react": "^17.0.38",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
