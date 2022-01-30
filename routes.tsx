@@ -6,6 +6,12 @@ export const RouteAdminRole = [
         children: []
     },
     {
+        name_var: 'Table List',
+        url_var: '/table-list',
+        icon_var: 'ri-table-fill',
+        children: []
+    },
+    {
         name_var: 'User Profile',
         url_var: '/user-profile',
         icon_var: 'ri-profile-fill',
