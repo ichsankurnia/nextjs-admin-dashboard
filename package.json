@@ -3,11 +3,19 @@
   "scripts": {
     "dev": "set port=1411 && next dev",
     "build": "next build",
-    "start": "set port=1411 && next start"
+    "start": "set port=1411 && next start",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@tailwindui/react": "^0.1.1",
     "axios": "^0.25.0",
+    "intercept-stdout": "^0.1.2",
+    "mui-datatables": "^4.0.0",
     "next": "latest",
+    "next-compose-plugins": "^2.2.1",
+    "next-images": "^1.8.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "recoil": "^0.6.0"
