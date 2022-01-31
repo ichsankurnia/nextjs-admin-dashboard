@@ -9,7 +9,9 @@
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "@mui/styles": "^5.0.2",
     "@tailwindui/react": "^0.1.1",
+    "@types/mui-datatables": "^3.7.7",
     "axios": "^0.25.0",
     "intercept-stdout": "^0.1.2",
     "mui-datatables": "^4.0.0",
