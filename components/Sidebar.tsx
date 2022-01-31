@@ -6,10 +6,10 @@ import { useRecoilState } from "recoil";
 import { RouteAdminRole } from "../routes";
 import { collapseState, titleNavState } from "../utils/atoms";
 import { getTitleNav } from "../utils/helpers";
-import UserMenu from "./UserMenu";
+import ProfileMenu from "./ProfileMenu";
 
 
-const SIDEBAR_IMG = [
+const SIDEBAR_BG = [
     '/sidebar-1.jpg',
     '/sidebar-2.jpg',
     '/sidebar-3.jpg',
@@ -54,7 +54,7 @@ function Sidebar({ }: Props) {
     });
 
     useEffect(() => {
-        setSidebarImg(SIDEBAR_IMG[Math.floor(Math.random() * SIDEBAR_IMG.length)])
+        setSidebarImg(SIDEBAR_BG[Math.floor(Math.random() * SIDEBAR_BG.length)])
     }, [pathname])
 
     const handleClickRoute = (title: string) => {
@@ -67,7 +67,7 @@ function Sidebar({ }: Props) {
             <div className={`z-20`}>
                 {/* SIDEBAR MOBILE */}
                 <div className={`fixed inset-0 bg-black bg-opacity-60 z-40 md:hidden md:z-auto transition-opacity duration-200 ${sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden="true" onClick={() => setSidebarOpen(false)}></div>
-                <div className='md:hidden sticky top-0 w-full px-4 sm:px-6 lg:px-8 z-30'>
+                <div className='md:hidden sticky top-0 w-full pb-2 px-4 sm:px-6 lg:px-8 z-30'>
                     <div className="flex items-center justify-between pt-4 pb-2">
                         <button onClick={() => setSidebarOpen(!sidebarOpen)}
                             className='inline-flex items-center justify-center p-1 rounded-md text-gray-700 hover:bg-black hover:text-white outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black'
@@ -86,7 +86,7 @@ function Sidebar({ }: Props) {
                         {/* Header */}
                         <div className='flex h-full justify-between items-center'>
                             <span />
-                            <UserMenu />
+                            <ProfileMenu />
                         </div>
                     </div>
                     <h1>{titleNavBar}</h1>
@@ -98,7 +98,7 @@ function Sidebar({ }: Props) {
                     ${sidebarOpen? 'translate-x-0' : '-translate-x-64'} ${collapse? 'w-64':'md:w-[4.4rem]'} `}
                 >
                     <div className={`overflow-y-auto overflow-x-hidden h-full flex flex-col items-center text-white`}>
-                        <div className='cursor-pointer z-10 w-full px-4' onClick={() => window.location.reload()}>
+                        <div className='cursor-pointer z-10 w-full px-4' onClick={() => window.location.href = '/dashboard'}>
                             {collapse?
                             <div className="flex justify-center items-center border-b border-gray-500 p-5">
                                 <img src='/next-logo.png' className="w-8 mr-3.5" />
