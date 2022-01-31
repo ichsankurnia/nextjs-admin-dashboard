@@ -6,9 +6,15 @@ export const RouteAdminRole = [
         children: []
     },
     {
-        name_var: 'Table List',
-        url_var: '/table-list',
+        name_var: 'MUI Datatable',
+        url_var: '/mui-datatable',
         icon_var: 'ri-table-fill',
+        children: []
+    },
+    {
+        name_var: 'Material Table',
+        url_var: '/material-table',
+        icon_var: 'ri-archive-drawer-fill',
         children: []
     },
     {
