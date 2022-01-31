@@ -5,7 +5,7 @@ import  { useState, useRef, useEffect } from 'react';
 
 const BG_AVATAR = ['152e4d', '0891b2', '2E8B57', '8B4513', '4B0082', '999', '000']
 
-function UserMenu() {
+function ProfileMenu() {
     const [modalOut, showModalOut] = useState(false)
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [bgAvatar, setBgAvatar] = useState(BG_AVATAR[0])
@@ -80,7 +80,7 @@ function UserMenu() {
                         <li>
                             <Link href='/dashboard/profile'>
                                 <a className="font-medium hover:bg-gray-800 hover:text-white rounded flex items-center py-1 px-3" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                                    <i className="ri-settings-4-fill mr-2"></i>Settings
+                                    <i className="ri-user-3-fill mr-2"></i>My Profile
                                 </a>
                             </Link>
                         </li>
@@ -101,4 +101,4 @@ function UserMenu() {
     )
 }
 
-export default UserMenu
+export default ProfileMenu
