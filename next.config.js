@@ -16,5 +16,6 @@ function interceptStdout(text) {
 intercept(interceptStdout)
 
 module.exports = withPlugins([ [withImages] ], {
-  reactStrictMode: true,
+  // reactStrictMode: true,
+  reactStrictMode: false, // for material-table issue
 })
