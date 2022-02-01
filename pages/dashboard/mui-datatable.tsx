@@ -167,13 +167,13 @@ const MUITable = ({ }: Props) => {
 					filterPaper: { width: "450px"},
 				},
 			},
-			MUIDataTableViewCol: {
-				styleOverrides: {
-					formGroup: { paddingLeft: 20, paddingRight:5, paddingBottom: 10 },
-					title: { paddingTop: 15, paddingLeft: 15, paddingBottom: 5 },
-					label: {paddingLeft:8}
-				},
-			},
+			// MUIDataTableViewCol: {
+			// 	styleOverrides: {
+			// 		formGroup: { paddingLeft: 20, paddingRight:5, paddingBottom: 10 },
+			// 		title: { paddingTop: 15, paddingLeft: 15, paddingBottom: 5 },
+			// 		label: {paddingLeft:8}
+			// 	},
+			// },
 		},
 	})
 	
