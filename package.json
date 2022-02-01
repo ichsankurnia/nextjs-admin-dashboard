@@ -7,13 +7,14 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install"
   },
   "dependencies": {
-    "@material-ui/core": "^4.12.3",
+    "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "@mui/styles": "^5.0.2",
     "@tailwindui/react": "^0.1.1",
     "@types/mui-datatables": "^3.7.7",
     "axios": "^0.25.0",
     "intercept-stdout": "^0.1.2",
+    "material-table": "^1.69.3",
     "mui-datatables": "^4.0.0",
     "next": "latest",
     "next-compose-plugins": "^2.2.1",
