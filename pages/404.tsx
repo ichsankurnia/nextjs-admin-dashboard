@@ -1,8 +1,18 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Heading from "../components/Head";
 
 type Props = {};
 
 const Custom404 = ({ }: Props) => {
+	const router = useRouter()
+
+	useEffect(() => {
+		setTimeout(() => {
+			router.replace('/')		
+		}, 5000);
+	}, [])
+
 	return (
 		<>
 			<Heading titlePage="404" />
