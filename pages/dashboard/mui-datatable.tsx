@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import MUIDataTable, { FilterType, MUIDataTableOptions, Responsive, ToolbarButton } from "mui-datatables";
 import { ThemeProvider } from "@mui/styles";
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
@@ -8,6 +8,7 @@ import DashboardLayout from "../../layouts/DashboardLayout";
 type Props = {};
 
 const MUITable = ({ }: Props) => {
+	const [isBrowser, setIsBrowser] = useState(false);
 	const [responsive, setResponsive] = useState("standard");
 	const [tableBodyHeight, setTableBodyHeight] = useState("");
 	const [tableBodyMaxHeight, setTableBodyMaxHeight] = useState("");
@@ -50,6 +51,10 @@ const MUITable = ({ }: Props) => {
 		{ Name: "Gabby Strickland", Title: "Business Process Consultant", Location: "Scottsdale", Age: 26, Salary: "$45,000" },
 		{ Name: "Mason Ray", Title: "Computer Scientist", Location: "San Francisco", Age: 39, Salary: "$142,000" }
 	]);
+
+	useEffect(() => {
+		setIsBrowser(process.browser);
+	}, [])
 
 	const columns = [
 		{
@@ -150,30 +155,42 @@ const MUITable = ({ }: Props) => {
 		onTableChange: (action: any, state: any) => {
 			console.log(action);
 			console.dir(state);
-		}
+		},
 	};
 
 	let theme = createTheme({
+		typography: {
+			fontFamily: 'Poppins'
+		},
 		components: {
 			// @ts-ignore custom component
 			MUIDataTable:{
 				styleOverrides: {
-					root: { padding: 10},
+					paper: {padding: '0px 25px', paddingTop: 20}
+				},
+			},
+			MUIDataTableHeadCell: {
+				styleOverrides: {
+					// root: {backgroundColor: '#eee'},
+					// data: {backgroundColor: '#eee'},
+					fixedHeader: {backgroundColor: '#eee', border: 'none'},
+					// mypopper: {backgroundColor: '#eee', border: 'none'},
+					// contentWrapper: {backgroundColor: '#eee'} 
 				},
 			},
 			MUIDataTableToolbar: {
 				styleOverrides: {
-					root: {paddingTop: 20, paddingBottom:10},
+					root: {paddingBottom:30},
 					filterPaper: { width: "450px"},
 				},
 			},
-			// MUIDataTableViewCol: {
-			// 	styleOverrides: {
-			// 		formGroup: { paddingLeft: 20, paddingRight:5, paddingBottom: 10 },
-			// 		title: { paddingTop: 15, paddingLeft: 15, paddingBottom: 5 },
-			// 		label: {paddingLeft:8}
-			// 	},
-			// },
+			MUIDataTableViewCol: {
+				styleOverrides: {
+					formGroup: { paddingLeft: 20, paddingRight:5, paddingBottom: 10 },
+					title: { paddingTop: 15, paddingLeft: 15, paddingBottom: 5 },
+					label: {paddingLeft:8}
+				},
+			},
 		},
 	})
 	
@@ -262,12 +279,14 @@ const MUITable = ({ }: Props) => {
 					</select>
 				</div>
 			</div>
-			<div className='w-11/12 z-0'>
+			<div className='w-11/12 z-0 font-poppins'>
+				{isBrowser &&
 				<ThemeProvider theme={theme}>
 					{typeof window !== 'undefined' &&
 						<MUIDataTable title={"ACME Employee list"} data={data} columns={columns} options={options} />
 					}
 				</ThemeProvider>
+				}
 			</div>
 		</div>
 	)
