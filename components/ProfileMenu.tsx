@@ -80,7 +80,7 @@ function ProfileMenu() {
                         <li>
                             <Link href='/dashboard/profile'>
                                 <a className="font-medium hover:bg-gray-800 hover:text-white rounded flex items-center py-1 px-3" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                                    <i className="ri-user-3-fill mr-2"></i>My Profile
+                                    <i className="ri-user-3-line mr-2"></i>My Profile
                                 </a>
                             </Link>
                         </li>
@@ -88,7 +88,7 @@ function ProfileMenu() {
                             <button className="font-medium text-red-400 hover:bg-gray-800 hover:text-white rounded flex items-center py-1 px-3 w-full"
                                 onClick={() => showModalOut(true)}
                             >
-                                <i className="ri-logout-circle-fill mr-2"></i>Sign Out
+                                <i className="ri-logout-box-line mr-2"></i>Sign Out
                             </button>
                         </li>
                     </ul>
