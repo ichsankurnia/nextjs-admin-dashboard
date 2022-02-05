@@ -18,6 +18,12 @@ export const RouteAdminRole = [
         children: []
     },
     {
+        name_var: 'Modal Example',
+        url_var: '/modal-example',
+        icon_var: 'ri-share-box-fill',
+        children: []
+    },
+    {
         name_var: 'User Profile',
         url_var: '/user-profile',
         icon_var: 'ri-profile-fill',
