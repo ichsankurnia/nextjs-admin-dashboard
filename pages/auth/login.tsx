@@ -115,8 +115,8 @@ const login = (props: Props) => {
 						</div>
 					</div>
 
-					<div className="hidden md:block h-full w-full top-0 left-0 z-0">
-						<Image src='/cover.jpeg' alt="" layout='fill' /* objectFit='fill' */ objectFit='cover' className='rounded-xl' />
+					<div className="hidden md:block h-full w-full top-0 left-0 z-0 relative">
+						<Image src='/cover.jpeg' alt="" layout='fill' /* objectFit='fill' */ objectFit='cover' className='2xl:rounded-xl' />
 					</div>
 
 				</div>

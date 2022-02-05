@@ -27,7 +27,7 @@ export default function DashboardLayout({ children, titlePage }: Props) {
 					<div className="h-screen md:flex md:flex-col">
 						
 						{/* Navbar */}
-						<nav className="hidden md:block sticky top-0 py-6 px-4 sm:px-6 lg:px-8 z-10" style={{background: '#eee'}}>
+						<nav className="hidden md:block sticky top-0 py-6 px-4 sm:px-6 lg:px-8 z-40" style={{background: '#eee'}}>
 							<div className='flex justify-between items-center z-40'>
 								<h1>{titleNav}</h1>
 								<div className='flex items-center'>

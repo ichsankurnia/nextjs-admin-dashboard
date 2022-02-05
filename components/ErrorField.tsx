@@ -13,7 +13,7 @@ function ErrorField({ errors, name }: Props) {
         render={({ messages }) => {
             return messages
                 ? Object.entries(messages).map(([type, message]) => (
-                    <p key={type} className='text-red-500 text-xs mt-1 font-medium italic'>⚠ {message}</p>
+                    <p key={type} className='text-red-500 text-xs mt-1 font-medium italic font-poppins'>⚠ {message}</p>
                 ))
                 : null;
         }}
