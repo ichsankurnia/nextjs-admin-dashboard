@@ -1,13 +1,15 @@
-import { MouseEvent } from "react";
+import React, { MouseEvent } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ErrorField from "../ErrorField";
 
-type Props = {
-	message?: string,
-	data?: any,
-	onSubmit: (data: UserForm) => void,
-	onClose: (e: MouseEvent<HTMLElement>) => void
-};
+
+const LIST_ROLE = [
+	{ id: 1, name: 'Super Admin' },
+	{ id: 2, name: 'Administrator' },
+	{ id: 3, name: 'Other Role 1' },
+	{ id: 4, name: 'Other Role 2' },
+	{ id: 5, name: 'Other Role 3' },
+]
 
 export interface UserForm {
 	fullname: string,
@@ -21,15 +23,14 @@ interface UserFormExtend extends UserForm {
 	confirm_password: string
 }
 
-const LIST_ROLE = [
-	{ id: 1, name: 'Super Admin' },
-	{ id: 2, name: 'Administrator' },
-	{ id: 3, name: 'Other Role 1' },
-	{ id: 4, name: 'Other Role 2' },
-	{ id: 5, name: 'Other Role 3' },
-]
+type Props = {
+	message?: string,
+	data?: any,
+	onSubmit: (data: UserForm) => void,
+	onClose: (e: MouseEvent<HTMLElement>) => void
+};
 
-const CRUDModal = ({ onClose, onSubmit }: Props) => {
+const CRUDModal: React.FC<Props> = ({ onClose, onSubmit }: Props) => {
 	const {
 		register,
 		formState: { errors },
@@ -38,9 +39,7 @@ const CRUDModal = ({ onClose, onSubmit }: Props) => {
 	} = useForm<any>({ criteriaMode: "all" });
 
 	
-	const onSubmitForm: SubmitHandler<UserFormExtend> = (data: UserFormExtend) => {
-		const {fullname, role, phone_number, address, password, confirm_password} = data
-
+	const onSubmitForm: SubmitHandler<UserFormExtend> = ({fullname, role, phone_number, address, password, confirm_password}) => {
 		if(password !== confirm_password){
 			alert('password not match')
 			return

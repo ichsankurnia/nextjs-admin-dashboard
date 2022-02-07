@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import React, { MouseEvent } from "react";
 
 type Props = {
 	message: string,
@@ -7,7 +7,7 @@ type Props = {
 };
 
 
-const ConfirmModal = ({ message, onClose, onNext }: Props) => {
+const ConfirmModal: React.FC<Props> = ({ message, onClose, onNext }: Props) => {
 	return <>
 		<div className="modal-form">
 			<div className="modal-form-outside" onClick={onClose} />
