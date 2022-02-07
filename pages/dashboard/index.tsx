@@ -6,7 +6,36 @@ type Props = {};
 function index({}: Props) {
   return (
       <div className='text-2xl'>
-          Home Dashboard
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
+          <h1>Home Dashboard</h1>
       </div>
   )
 }
