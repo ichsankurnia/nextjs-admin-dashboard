@@ -15,6 +15,9 @@ function ProfileMenu() {
     const trigger = useRef<any>(null);
     const dropdown = useRef<any>(null);
 
+    const userLocal = typeof window !== 'undefined'? localStorage.getItem('user'): null
+    const user = userLocal? JSON.parse(userLocal || '') : null
+
     // close on click outside
     useEffect(() => {
         const clickHandler = ({ target }: any) => {
@@ -53,10 +56,10 @@ function ProfileMenu() {
                     onClick={() => setDropdownOpen(!dropdownOpen)}
                 >
                     <div className="w-8 h-8 rounded-full bg-gray-400">
-                        <img src={`https://ui-avatars.com/api/?name=${'User'}&background=${bgAvatar}&color=fff`} className='rounded-full' />
+                        <img src={`https://ui-avatars.com/api/?name=${user?.name}&background=${bgAvatar}&color=fff`} className='rounded-full' />
                     </div>
                     <div className="flex items-center truncate">
-                        <span className="truncate ml-2 mr-1 font-medium group-hover:text-indigo-600">{'Username'}</span>
+                        <span className="truncate ml-2 mr-1 font-medium group-hover:text-indigo-600">{user?.name}</span>
                         <svg className="w-3 h-3 flex-shrink-0 ml-1 fill-current text-gray-400" viewBox="0 0 12 12">
                             <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
                         </svg>
@@ -75,8 +78,8 @@ function ProfileMenu() {
                 >
                     <div ref={dropdown} onFocus={() => setDropdownOpen(true)} onBlur={() => setDropdownOpen(false)} >
                         <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200">
-                            <div className="font-medium text-gray-800">{'Username'}</div>
-                            <div className="text-xs text-gray-500 italic">{'Administrator'}</div>
+                            <div className="font-medium text-gray-800">{user?.name}</div>
+                            <div className="text-xs text-gray-500 italic">{user?.email}</div>
                         </div>
                         <ul>
                             <li>
@@ -104,4 +107,10 @@ function ProfileMenu() {
     )
 }
 
-export default ProfileMenu
+import dynamic from 'next/dynamic'
+
+const ComponentWithNoSSR = dynamic(() => Promise.resolve(ProfileMenu), {ssr: false} )
+
+export default ComponentWithNoSSR
+
+// export default ProfileMenu
