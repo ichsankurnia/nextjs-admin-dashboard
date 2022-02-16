@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { GoogleLoginResponse, GoogleLoginResponseOffline, useGoogleLogin } from "react-google-login";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ErrorField from "../../components/ErrorField";
+import { setCookie } from "../../utils/helpers";
 
 type Props = {};
 
@@ -11,13 +13,70 @@ interface DataForm {
 	password: string
 }
 
+interface GoogleResponseProfile {
+	name: string,
+	email: string,
+	imageUrl: string,
+	googleId: string,
+	giveName: string,
+	familyName: string
+}
+
+interface GoogleResponseToken {
+	access_token: string,
+	expires_at: number,
+	expires_in: number,
+	first_issued_at: number,
+	id_token: string,
+	idpId: string
+}
+
+
+const GOOGLE_CLIENT_ID = '1065595371966-2u9302qdgajdhbl3t0gocain85as7va7.apps.googleusercontent.com'
+
+const BG = [
+	'/cover.jpeg',
+	'/bg7.jpg'
+]
+
 const login = (props: Props) => {
+	const [bgImage, setBgImage] = useState(BG[0])
+
 	const router = useRouter()
+
+	const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+		console.log('Success :', res)
+		const responseData = res as GoogleLoginResponse
+		console.log(responseData)
+
+		// document.cookie = 'token=' + responseData.tokenObj.id_token + "expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+		setCookie('token', responseData.tokenObj.id_token, 1, responseData.tokenObj.expires_at)
+		localStorage.setItem('user', JSON.stringify(responseData.profileObj))
+		
+		router.push('/dashboard')
+	}
+
+	const onFailure = (res: GoogleLoginResponse) => {
+		console.log('Failed Login with Google :', res)
+	}
+
+	const { signIn } = useGoogleLogin({
+		onSuccess: onSuccess,
+		onFailure: onFailure,
+		clientId: GOOGLE_CLIENT_ID,
+		// isSignedIn: true,
+		// accessType: 'offline',
+		cookiePolicy: 'single_host_origin'
+	})
 	
 	useEffect(() => {
     // Prefetch the dashboard page
     router.prefetch('/dashboard')
   }, [])
+
+  useEffect(() => {
+	setBgImage(BG[Math.floor(Math.random() * BG.length)])
+}, [])
 
 	const {
 		register,
@@ -56,7 +115,9 @@ const login = (props: Props) => {
 							<div className="mt-7 md:mt-8">
 								<p className="font-semibold mb-1.5">Sign in with</p>
 								<div className="flex items-center space-x-3">
-									<button className="w-1/3 flex justify-center items-center border-[1.5px] border-gray-400 rounded-md text-lg md:text-2xl py-1 text-gray-500 hover:text-white hover:bg-indigo-600 hover:border-transparent">
+									<button className="w-1/3 flex justify-center items-center border-[1.5px] border-gray-400 rounded-md text-lg md:text-2xl py-1 text-gray-500 hover:text-white hover:bg-indigo-600 hover:border-transparent"
+										onClick={signIn}
+									>
 										<i className="ri-google-fill"></i>
 									</button>
 									<button className="w-1/3 flex justify-center items-center border-[1.5px] border-gray-400 rounded-md text-lg md:text-2xl py-1 text-gray-500 hover:text-white hover:bg-indigo-600 hover:border-transparent">
@@ -116,7 +177,7 @@ const login = (props: Props) => {
 					</div>
 
 					<div className="hidden md:block h-full w-full top-0 left-0 z-0 relative">
-						<Image src='/cover.jpeg' alt="" layout='fill' /* objectFit='fill' */ objectFit='cover' className='2xl:rounded-xl' />
+						<Image src={bgImage} alt="" layout='fill' /* objectFit='fill' */ objectFit='cover' priority className='2xl:rounded-xl' />
 					</div>
 
 				</div>
