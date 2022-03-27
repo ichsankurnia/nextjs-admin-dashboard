@@ -6,14 +6,14 @@ import { setCookie } from "../../utils/helpers";
 type Props = {};
 
 const index = (props: Props) => {
-    const router = useRouter()
+  const router = useRouter()
 
-    useEffect(() => {
-      setCookie('token', '', 1, 946684800)
-        localStorage.clear()
+  useEffect(() => {
+    setCookie('token', '', 1, 946684800)
+    localStorage.clear()
 
-        router.replace('/auth/login')
-    })
+    router.replace('/auth/login')
+  })
 
   return <Loader />;
 };
