@@ -35,3 +35,5 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+package-lock.json
+client_secret_1065595371966-2u9302qdgajdhbl3t0gocain85as7va7.apps.googleusercontent.com.json
