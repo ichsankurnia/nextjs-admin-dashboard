@@ -18,6 +18,18 @@ export const RouteAdminRole = [
         children: []
     },
     {
+        name_var: 'MUI Datagrid',
+        url_var: '/mui-datagrid',
+        icon_var: 'ri-archive-drawer-fill',
+        children: []
+    },
+    {
+        name_var: 'React Table',
+        url_var: '/react-table',
+        icon_var: 'ri-archive-drawer-fill',
+        children: []
+    },
+    {
         name_var: 'Modal Example',
         url_var: '/modal-example',
         icon_var: 'ri-share-box-fill',
