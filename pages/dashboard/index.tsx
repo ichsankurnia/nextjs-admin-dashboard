@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import React, { ReactElement } from 'react';
 import DashboardLayout from '../../layouts/DashboardLayout';
 
@@ -49,6 +50,18 @@ function index({}: Props) {
 //       )
 // }
 
+
 index.layout = DashboardLayout
 
 export default index;
+
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { cookies, url } = context.req
+
+	console.log(cookies, url)
+
+	return {
+		props: {}, // will be passed to the page component as props
+	}
+}

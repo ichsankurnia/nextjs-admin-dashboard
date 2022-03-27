@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next'
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -52,7 +53,7 @@ const login = (props: Props) => {
 		// document.cookie = 'token=' + responseData.tokenObj.id_token + "expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
 		setCookie('token', responseData.tokenObj.id_token, 1, responseData.tokenObj.expires_at)
 		localStorage.setItem('user', JSON.stringify(responseData.profileObj))
-		
+
 		router.push('/dashboard')
 	}
 
@@ -185,5 +186,15 @@ const login = (props: Props) => {
 		</>
 	)
 };
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { cookies, url } = context.req
+
+	console.log(cookies, url)
+
+	return {
+		props: {}, // will be passed to the page component as props
+	}
+}
 
 export default login;
